@@ -9,3 +9,12 @@ docker-compose up -d
 ```
 
 Then configure nginx
+
+## Todo List
+
+- [ ] Add progress in videos, so for example in the url ?time=10s goes to the 10 second
+- [ ] Implement autoplay
+- [ ] Implement different language subtitles
+- [ ] Implement adding subtitles to videoframes
+- [ ] Tags under the video page should lead to search
+- [ ] Multiple Resolutions
