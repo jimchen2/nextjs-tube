@@ -1,7 +1,7 @@
 
 services:
   nextjs-tube:
-    image: jimchen2/nextjs-tube:0 
+    image: jimchen2/nextjs-tube:latest-arm
     ports:
       - '1240:3000'
     env_file:

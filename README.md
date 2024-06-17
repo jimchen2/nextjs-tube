@@ -9,3 +9,13 @@ docker-compose up -d
 ```
 
 Then configure nginx
+
+
+```
+# add Dockerfile
+docker build -t jimchen2/nextjs-tube:0 .
+
+# add docker-compose and .env
+docker-compose up -d
+
+```
