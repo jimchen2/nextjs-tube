@@ -1,4 +1,3 @@
-
 services:
   nextjs-tube:
     image: jimchen2/nextjs-tube:latest-arm
@@ -8,6 +7,7 @@ services:
       - .env  # Environment variables file
     depends_on:
       - mongo
+    restart: always  # This line ensures the service always restarts
 
   mongo:
     image: mongo:latest
@@ -15,6 +15,7 @@ services:
       - '27017:27017'
     volumes:
       - mongo-data:/data/db
+    restart: always  # Optionally ensure MongoDB also always restarts
 
 volumes:
   mongo-data:
