@@ -15,19 +15,26 @@ const NavbarMobile = () => {
     router.push(`/?query=${searchQuery}`);
   };
 
+  const handleNavigation = (path) => {
+    router.push(path);
+  };
+
   return (
     <nav className="border shadow-lg">
       <div className="container mx-auto flex flex-col justify-between items-center py-4 px-6">
         <div className="flex justify-between w-full items-center">
-          <div className="text-gray-700 text-lg px-4 py-2 rounded-xl hover:bg-gray-200">
-            <a href="/">NextTube</a>
+          <div
+            className="text-gray-700 text-lg px-4 py-2 rounded-xl hover:bg-gray-200 cursor-pointer"
+            onClick={() => handleNavigation("/")}
+          >
+            NextTube
           </div>
-          <a
-            href="/upload"
-            className="px-6 py-2 text-gray-800 rounded-lg hover:bg-gray-200 transition-colors duration-300"
+          <div
+            onClick={() => handleNavigation("/upload")}
+            className="px-6 py-2 text-gray-800 rounded-lg hover:bg-gray-200 transition-colors duration-300 cursor-pointer"
           >
             Upload
-          </a>
+          </div>
         </div>
         <div className="flex flex-col items-center justify-center space-y-4 mt-4">
           <div className="flex">
