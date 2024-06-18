@@ -31,3 +31,4 @@ docker-compose up -d
 - [ ] Implement adding subtitles to videoframes
 - [ ] Tags under the video page should lead to search
 - [ ] Multiple Resolutions
+- [ ] Configure External MongoDB
