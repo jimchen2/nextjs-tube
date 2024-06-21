@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-const NavbarPC = () => {
+const NavbarPC = ({ toggleSidebar }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const router = useRouter();
+  const title = process.env.NEXT_PUBLIC_PLATFORM;
 
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
@@ -22,11 +23,21 @@ const NavbarPC = () => {
   return (
     <nav className="border shadow-lg">
       <div className="container mx-auto flex flex-row justify-between items-center py-4 px-6">
-        <div
-          className="text-gray-700 text-lg px-4 py-2 rounded-xl hover:bg-gray-200 cursor-pointer"
-          onClick={() => handleNavigation("/")}
-        >
-          NextTube
+        <div className="flex items-center">
+          <button
+            onClick={toggleSidebar}
+            className="mr-4 p-2 rounded-full hover:bg-gray-200 focus:outline-none"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+          <div
+            className="text-gray-700 text-lg px-4 py-2 rounded-xl hover:bg-gray-200 cursor-pointer"
+            onClick={() => handleNavigation("/")}
+          >
+            {title}
+          </div>
         </div>
         <div className="flex flex-row items-center justify-center space-x-8 mr-8">
           <div className="flex">
