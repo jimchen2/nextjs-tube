@@ -57,6 +57,11 @@ If video is Merged-> derive the embedded iframe
 
 If video is Uploaded -> Let User Toggle Subtitle in a Button -> Show the Subtitle with CSS Over the Video Frame with src the S3 URL
 
+## Hide Tags
+
+Configure in Cookie for users to hide videos with tags in search
+
+Configure in Cookie to save user's preferences
 
 ## MongoDB 
 
