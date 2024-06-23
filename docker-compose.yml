@@ -5,17 +5,4 @@ services:
       - '1240:3000'
     env_file:
       - .env  # Environment variables file
-    depends_on:
-      - mongo
     restart: always  # This line ensures the service always restarts
-
-  mongo:
-    image: mongo:latest
-    ports:
-      - '27017:27017'
-    volumes:
-      - mongo-data:/data/db
-    restart: always  # Optionally ensure MongoDB also always restarts
-
-volumes:
-  mongo-data:
