@@ -1,5 +1,5 @@
-import dbConnect from '../../lib/mongoose';
-import Video from '../../models/Video';
+import dbConnect from '../../../lib/mongoose';
+import Video from '../../../models/Video';
 
 export default async (req, res) => {
   await dbConnect();

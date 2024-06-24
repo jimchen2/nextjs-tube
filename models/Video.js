@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 const SubtitleSchema = new mongoose.Schema({
   language: { type: String, required: true },
@@ -6,12 +6,35 @@ const SubtitleSchema = new mongoose.Schema({
 });
 
 const VideoSchema = new mongoose.Schema({
-  s3ObjectKey: { type: String, required: true },
-  url: { type: String, required: true },
-  language: { type: String, required: true },
-  subtitles: { type: [SubtitleSchema], default: [] },
-  filename: { type: String, required: true },
   tags: { type: [String], default: [] },
+  language: { type: String, required: true },
+  filename: { type: String, required: true },
+  thumbnailUrl: { type: String, required: true },
+  previewImageUrl: { type: String, required: true },
+  isMerged: { type: Boolean, required: true },
+  createdAt: { type: Date, default: Date.now },
+
+  uploadedVideo: {
+    s3ObjectKey: String,
+    videoUrl: String,
+    subtitles: [SubtitleSchema],
+    previewImageTimestamp: { type: Number, default: 5 },
+    thumbnailStart: { type: Number, default: 0 },
+    thumbnailEnd: { type: Number, default: 15 },
+  },
+
+  mergedVideo: {
+    platform: String,
+    externalUrl: String,
+  },
 });
 
-export default mongoose.models.Video || mongoose.model('Video', VideoSchema);
+// Indexes for efficient querying
+VideoSchema.index({ tags: 1 });
+VideoSchema.index({ filename: 'text' });
+VideoSchema.index({ language: 1 });
+VideoSchema.index({ createdAt: -1 });
+
+const Video = mongoose.model('Video', VideoSchema);
+
+module.exports = Video;

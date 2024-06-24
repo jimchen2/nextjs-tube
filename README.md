@@ -47,17 +47,21 @@ Delete -> Prompt Password -> Continue if Correct, else error and quit -> Delete 
 
 4. Search Video:
 
-Find any video with ... &sort=&start=&end=&language=&tag=&query= , if empty then default containing the query, query searches for query in filename (both capital/no letters)
+Find any video with ... &sort=&start=&end=&language=&tag=&query=&filter , if empty then default containing the query, query searches for query in filename (both capital/no letters)
+
+Filter means filtering out tags the user doesn't want
 
 Input query -> Return Videos from MongoDB with Preview Image and Thumbnail(hover), with paging
 
 5. Play Video 
 
+Get Video: get everything about a specific video by its _id in database
+
 If video is Merged-> derive the embedded iframe 
 
 If video is Uploaded -> Let User Toggle Subtitle in a Button -> Show the Subtitle with CSS Over the Video Frame with src the S3 URL
 
-## Hide Tags
+6. Hide Tags
 
 Configure in Cookie for users to hide videos with tags in search
 

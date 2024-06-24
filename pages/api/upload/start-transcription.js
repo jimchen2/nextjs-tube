@@ -1,8 +1,8 @@
 // pages/api/start-transcription.js
 
 import { StartTranscriptionJobCommand } from "@aws-sdk/client-transcribe";
-import { transcribeClient } from '../../lib/transcribeClient';
-import { getMediaFormat } from '../../lib/mimeTypeMapping';
+import { transcribeClient } from '../../../lib/transcribeClient';
+import { getMediaFormat } from '../../../lib/mimeTypeMapping';
 
 export default async (req, res) => {
   if (req.method === 'POST') {
