@@ -15,9 +15,10 @@ function MyApp({ Component, pageProps }) {
     <div className="flex flex-col min-h-screen">
       <Navbar toggleSidebar={toggleSidebar} />
       <div className="flex flex-1">
-        <Sidebar isOpen={isSidebarOpen} />
-        <main className={`flex-1 transition-all duration-300 ${isSidebarOpen ? 'ml-60' : 'ml-0'}`}>
+        <Sidebar isOpen={isSidebarOpen}/>
+        <main className={`flex-1 transition-all duration-300`}>
           <div className="p-4">
+          <br/>
           <br/>
           <br/>
           <br/>

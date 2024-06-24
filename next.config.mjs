@@ -1,7 +1,9 @@
+import nextPWA from 'next-pwa';
+
 /** @type {import('next').NextConfig} */
-const withPWA = require('next-pwa')({
+const withPWA = nextPWA({
   dest: 'public',
-})
+});
 
 const nextConfig = {
   reactStrictMode: true,
@@ -9,7 +11,11 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  images: {
+    domains: ['img.youtube.com'],
+  },
+
   // Add any other Next.js config options here
 };
 
-module.exports = withPWA(nextConfig);
+export default withPWA(nextConfig);

@@ -1,8 +1,0 @@
-services:
-  nextjs-tube:
-    image: jimchen2/nextjs-tube:latest-arm
-    ports:
-      - '1240:3000'
-    env_file:
-      - .env  # Environment variables file
-    restart: always  # This line ensures the service always restarts

@@ -1,18 +1,18 @@
-import dbConnect from '../../lib/mongoose';
-import Video from '../../models/Video';
+import dbConnect from "../../lib/mongoose";
+import Video from "../../models/Video";
 
 export default async (req, res) => {
   await dbConnect();
 
-  if (req.method === 'GET') {
+  if (req.method === "GET") {
     const {
-      sort = 'random',
+      sort = "random",
       start = 0,
       end = 10,
       language,
       tag,
-      query = '',
-      filter = '',
+      query = "",
+      filter = "",
     } = req.query;
 
     try {
@@ -20,7 +20,7 @@ export default async (req, res) => {
       let searchQuery = {};
 
       if (query) {
-        searchQuery.filename = { $regex: query, $options: 'i' };
+        searchQuery.filename = { $regex: query, $options: "i" };
       }
 
       if (language) {
@@ -33,20 +33,20 @@ export default async (req, res) => {
 
       // Filter out unwanted tags
       if (filter) {
-        const filterTags = filter.split(',');
+        const filterTags = filter.split(",");
         searchQuery.tags = { $nin: filterTags };
       }
 
       // Determine the sort order
       let sortOption = {};
       switch (sort) {
-        case 'createdAt':
+        case "createdAt":
           sortOption = { createdAt: -1 };
           break;
-        case 'filename':
+        case "filename":
           sortOption = { filename: 1 };
           break;
-        case 'random':
+        case "random":
           sortOption = { $sample: { size: parseInt(end) - parseInt(start) } };
           break;
         // Add more sort options as needed
@@ -56,23 +56,21 @@ export default async (req, res) => {
 
       // Perform the search
       let videos;
-      if (sort === 'random') {
+      if (sort === "random") {
         videos = await Video.aggregate([
           { $match: searchQuery },
-          { $sort: sortOption },
+          { $sample: { size: parseInt(end) - parseInt(start) } },
         ]);
       } else {
         videos = await Video.find(searchQuery)
           .sort(sortOption)
           .skip(parseInt(start))
           .limit(parseInt(end) - parseInt(start));
-      }
-
-      // Count total results for pagination
+      } // Count total results for pagination
       const totalCount = await Video.countDocuments(searchQuery);
 
       // Project only necessary fields
-      const projectedVideos = videos.map(video => ({
+      const projectedVideos = videos.map((video) => ({
         _id: video._id,
         filename: video.filename,
         thumbnailUrl: video.thumbnailUrl,
@@ -88,9 +86,9 @@ export default async (req, res) => {
       });
     } catch (error) {
       console.error(error);
-      res.status(500).json({ error: 'Error searching videos' });
+      res.status(500).json({ error: "Error searching videos" });
     }
   } else {
-    res.status(405).json({ error: 'Method not allowed' });
+    res.status(405).json({ error: "Method not allowed" });
   }
 };

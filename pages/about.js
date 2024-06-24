@@ -5,7 +5,7 @@ const title = process.env.NEXT_PUBLIC_PLATFORM;
 
 function About() {
   return (
-    <div className="min-h-screen bg-gray-50 p-8">
+    <div className="min-h-screen p-8">
       <main className="max-w-2xl mx-auto">
         <h1 className="text-3xl font-light mb-6">About {title}</h1>
         <div className="space-y-4 text-gray-900">
