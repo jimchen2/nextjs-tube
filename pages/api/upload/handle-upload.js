@@ -18,7 +18,7 @@ export default async function handleUpload(req, res) {
       tags, 
       previewImageTimestamp = 5, 
       previewVideoStart = 0, 
-      previewVideoEnd = 15 
+      previewVideoEnd = 10 
     } = req.body;
 
     // Step 1: Generate presigned URL

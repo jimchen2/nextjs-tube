@@ -1,6 +1,15 @@
-## How to Install?
 
+## Install 
+```sh
+# configure .env
+docker run -d --restart always --env-file .env -p 1240:3000 jimchen2/nextjs-tube
 ```
+
+## Build
+
+```sh
+# add Dockerfile
+docker build -t jimchen2/nextjs-tube:latest .
 ```
 
 
